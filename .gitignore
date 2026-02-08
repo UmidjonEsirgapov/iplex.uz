@@ -1,0 +1,42 @@
+# Cache and progress files
+.cache/
+.progress.json
+
+# Python source files (not needed in production)
+*.py
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Data files
+*.csv
+posts*.csv
+
+# Build scripts (optional - keep if you want to rebuild)
+# build.py
+# generate_sitemap.py
+# remove_html_from_urls.py
+# colab_generator.py
+
+# Templates (optional - keep if you want to rebuild)
+# templates/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep website files (en/, ru/, index.html, sitemap.xml, .htaccess)

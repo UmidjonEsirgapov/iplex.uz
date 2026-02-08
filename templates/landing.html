@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Educational articles and news from Uzbekistan">
+    <title>Educational Articles - InfoEdu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--pico-muted-color);
+            margin-bottom: 2rem;
+        }
+        .language-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .language-card {
+            padding: 2rem;
+            border: 2px solid var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .language-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: var(--pico-primary-color);
+        }
+        .language-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .language-card p {
+            margin-bottom: 0;
+            color: var(--pico-muted-color);
+        }
+        .news-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--pico-muted-border-color);
+        }
+        .news-section h2 {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .news-card {
+            padding: 1.5rem;
+            border: 1px solid var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--pico-card-background-color);
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .news-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .news-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .news-card .lang-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--pico-primary-background);
+            color: var(--pico-primary-inverse);
+            border-radius: var(--pico-border-radius);
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--pico-muted-border-color);
+            text-align: center;
+            color: var(--pico-muted-color);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="hero">
+            <h1>Educational Articles</h1>
+            <p>Choose your preferred language to browse articles and news from Uzbekistan</p>
+        </div>
+        
+        <div class="language-cards">
+            <a href="en/index.html" class="language-card">
+                <h2>🇬🇧 English</h2>
+                <p>Browse articles in English</p>
+            </a>
+            
+            <a href="ru/index.html" class="language-card">
+                <h2>🇷🇺 Русский</h2>
+                <p>Просмотреть статьи на русском языке</p>
+            </a>
+        </div>
+        
+        {% if latest_articles %}
+        <section class="news-section">
+            <h2>Latest Articles</h2>
+            <div class="news-grid">
+                {% for article in latest_articles %}
+                <div class="news-card">
+                    <span class="lang-badge">{{ article.lang_name }}</span>
+                    <a href="{{ article.url }}">
+                        <h3>{{ article.title }}</h3>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+        
+        <footer>
+            <p>Generated for Educational Purposes. Source: <a href="https://infoedu.uz" rel="dofollow">infoedu.uz</a></p>
+        </footer>
+    </main>
+</body>
+</html>

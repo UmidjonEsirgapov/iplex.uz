@@ -1,0 +1,12 @@
+# Remove .html extension from URLs (Clean URLs)
+RewriteEngine On
+
+# Redirect old .html URLs to clean URLs (301 redirect for SEO)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1? [R=301,L]
+
+# Add .html extension internally (if file exists)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]

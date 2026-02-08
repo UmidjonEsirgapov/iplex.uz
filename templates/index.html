@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta_description }}">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        nav.container-fluid {
+            margin-bottom: 2rem;
+        }
+        .breadcrumbs {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .article-card {
+            padding: 1.5rem;
+            border: 1px solid var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .article-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .article-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--pico-muted-border-color);
+            text-align: center;
+            color: var(--pico-muted-color);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong><a href="../index.html">Home</a></strong></li>
+        </ul>
+        <ul>
+            <li><a href="../en/index.html">English</a></li>
+            <li><a href="../ru/index.html">Русский</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; 
+            <strong>{{ lang_name }}</strong>
+        </div>
+        
+        <header>
+            <h1>{{ page_title }}</h1>
+            <p>{{ page_description }}</p>
+        </header>
+        
+        <div class="articles-grid">
+            {% for post in posts %}
+            <div class="article-card">
+                <a href="{{ post.filename }}">
+                    <h3>{{ post.title }}</h3>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <footer>
+            <p>Generated for Educational Purposes. Source: <a href="https://infoedu.uz" rel="dofollow">infoedu.uz</a></p>
+        </footer>
+    </main>
+</body>
+</html>
